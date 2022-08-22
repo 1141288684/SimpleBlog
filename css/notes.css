@@ -1,0 +1,21 @@
+.note{
+	width: 700px;
+    /* height: 300px; */
+    background: linear-gradient(-45deg, transparent 32px, #FEF9EF 0 );
+    position: relative;
+    border-radius: 0.5em;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding: 30px;
+}
+.note::after{
+	content: "";
+	position: absolute;
+	right: 0px;
+	bottom:0px;
+	background: linear-gradient(-45deg, transparent 50%, #FEF9EF 0);
+	width: 45px;
+	height:  45px;
+	border-bottom-right-radius: 4px;
+	box-shadow: -0.2em -0.2em 0.2em #8d8d8d;
+}

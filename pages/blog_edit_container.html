@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>编辑博客</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="../js/global_data.js"></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			input::-webkit-input-placeholder{
+				color: #86909C;
+			}
+			.btn-post{
+				background: #388EFF;
+				border: 0;
+				padding: 10px;
+				border-radius: 3px;
+				font-size: 20px;
+				color: white;
+			}
+			.btn-post:hover{
+				background: #499FFF;
+			}
+		</style>
+	</head>
+	<body style="background: #F8F9FA;">
+		<script>
+			function onFile(e){
+				var reader = new FileReader();
+				reader.readAsDataURL(e.files[0]);
+				reader.onloadend=function(ev){
+					document.getElementById('img').src=ev.target.result;
+				}
+			}
+			function onSelectFile(){
+				document.getElementById('file').click();
+			}
+			function post(){
+				var ifr = document.querySelector('iframe');
+				var doc = ifr.contentWindow.document;
+				var post_detail = doc.getElementById('div_if').innerHTML;
+				var short = doc.getElementById('div_if').innerText.slice(0,50);
+				$.ajax({
+					url:baseUrl+'new_post',
+					type:'post',
+					data:{'title':document.getElementById('title').value,
+					'short':short,
+					'page':post_detail,
+					'img':document.getElementById('img').src},
+					success:function(msg){
+						if(msg=='发布成功'){
+							document.location.href='../index.html';
+						}
+					},
+					error:function(err){
+						alert('出错，请重新发布')
+					}
+				});
+			}
+		</script>
+		<div style="width: 100%;height: 100%;">
+			<div style="background: #FFFFFF;">
+				<input id="title" style="width: 90%;border: 0px;outline: none;font-size: 25px;background: #FFFFFF;resize: none;padding: 20px;" placeholder="请输入文章标题..."></textarea>
+				<button class="btn-post" onclick="post()">发布博客</button>
+			</div>
+			<iframe src="blog_editor.html" style="width: 100%;height: 600px;border: 0px;"></iframe>
+			<div style="height: 150px;background: #FFFFFF;">
+				<button class="btn-post" style="margin: 0 0 0 100px;position: fixed;" onclick="onSelectFile()">请上传封面图片：</button><input id="file" accept="image/png, image/jpeg" type="file" onchange="onFile(this)" style="display: none;"/>
+				<img id="img" style="height: 150px;margin-left: 350px;"/>
+			</div>
+			
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,31 @@
+.btn-new{
+	background-color: #B8E4F0;
+	border: 1px;
+	border-radius: 90px;
+	font-size: 25px;
+	padding: 10px 20px 10px 20px;
+	box-shadow: 2px 2px #AFC4EA, 3px 3px #AFC4EA, 4px 4px #AFC4EA;
+	transition: 0.3s;
+}
+.btn-new:hover{
+	background-color: #98BAE7;
+	transform: scale(1.05,1.05);
+}
+.btn-new:active{
+	/* background-color: #88DBEB; */
+	/* opacity: 0.3; */
+	box-shadow: 1px 1px  #AFC4EA, 2px 2px #AFC4EA, 3px 3px #AFC4EA;;
+}
+div.card {
+  width: 1000px;
+  height: 300px;
+  background: #FFFFFF;
+  display: table;
+  margin: 100px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);//设置两层阴影
+  text-align: center;
+  transition-duration: 0.5s;
+}
+div.card:hover{
+	transform: scale(1.05,1.05);
+}

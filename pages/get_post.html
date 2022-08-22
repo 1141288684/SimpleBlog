@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="../js/global_data.js"></script>
+		<style>
+			li{
+				list-style: none;
+				line-height: 100px;
+			}
+			.img-icon{
+				border-radius: 50%;
+				border: 0;
+				background: white;
+			}
+			/* #like-btn{
+				border-radius: 50%;
+				border: 0;
+				background: url(../img/like.png);
+			}
+			#like-btn:hover{
+				background: url(../img/like-hov.png);
+			}
+			#message-btn{
+				border-radius: 50%;
+				border: 0;
+				background: url(../img/message.png);
+			}
+			#message-btn:hover{
+				background: url(../img/message-hov.png);
+			} */
+		</style>
+	</head>
+	<body style="background: #F4F5F5;">
+		<script>
+			function getQueryVariable(variable)
+			{
+			   var query = window.location.search.substring(1);
+			   var vars = query.split("&");
+			   for (var i=0;i<vars.length;i++) {
+					   var pair = vars[i].split("=");
+					   if(pair[0] == variable){return pair[1];}
+			   }
+			   return(false);
+			}
+			function load(){
+				var title = getQueryVariable('title');
+				document.title=decodeURI(title);
+				$.ajax({
+					url:baseUrl+'get_post',
+					type:'get',
+					data:{'title':title},
+					success:function(msg){
+						
+						document.getElementById('blog_detail').innerHTML='<h1>'+decodeURI(title)+'</h1>'+msg;
+					}
+				});
+			}
+			load();
+		</script>
+		<div>
+			<div style="float: left;width: 10%;position: fixed;margin-top: 5%;">
+				
+				<ul>
+					<li>
+						<button class="img-icon">
+							<img src="../img/like.png" width="40px"/>
+						</button>
+						
+					</li>
+					<li>
+						<button class="img-icon">
+							<img src="../img/message.png" width="40px"/>
+						</button>
+						
+					</li>
+					<li>
+						<button class="img-icon">
+							<img src="../img/star.png" width="40px"/>
+						</button>
+						
+					</li>
+					<li>
+						<button class="img-icon">
+							<img src="../img/share.png" width="40px"/>
+						</button>
+						
+					</li>
+					
+				</ul>
+			</div>
+			<div id="blog_detail" style="padding: 0 30px 0 30px;background: white;display: inline-block;width: 65%;margin-left: 10%;">
+				
+			</div>
+			<div style="float: right;background: #ffffff;width: 200px;padding-left: 50px;padding-top: 50px;">
+				<img src="../img/touxiang.jpg" width="150px" height="150px" style="border-radius: 50%;"/>
+				<h1>文章访问量：</h1>
+				<span>960w</span>
+				
+			</div>
+		</div>
+		<!-- <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script> -->
+		<script src="../js/auto_waifu.js"></script>
+	</body>
+</html>

@@ -1,0 +1,75 @@
+pre{
+		background-color: #F8F8F8;font-size: 20px;
+}
+tr{
+	font-size: 20px;
+}
+td{
+	font-size: 20px;
+}
+.main_left{
+	width: 150px;
+	height: 100%;
+	float:left;
+	background:#c0c0c0;
+}
+ul{
+	height: 40px;
+	width: auto;
+	/*会作为块级元素显示,表格前后带有换行符*/
+	display: table;
+	margin: 0 auto;         
+	text-align: center;
+	padding: 0;
+		
+}
+.test_box {
+	/* width: 400px; 
+	min-height: 120px; 
+	max-height: 300px;
+	_height: 120px; */
+	margin-left: auto; 
+	margin-right: auto; 
+	padding: 3px; 
+	outline: 0; 
+	/* border: 1px solid #a0b3d6; */
+	font-size: 12px; 
+	word-wrap: break-word;
+	overflow-x: hidden;
+	overflow-y: auto;
+	/* _overflow-y: visible; */
+	caret-color: #000000;
+}
+
+.view-text{
+  /**
+	思路：
+	1.设置inline-block属相
+	2.强制不换行
+	3.固定高度
+	4.隐藏超出部分
+	5.显示“……”
+  */
+  display: inline-block;
+  white-space: nowrap; 
+  width: 100%; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+.view-text:hover{
+	background-color: #A0B3D6;
+}
+
+font{
+	color: #000000;
+	display: inline-block;
+	white-space: nowrap;
+	width: 100%; 
+	/* overflow: hidden; */
+	text-overflow:ellipsis;
+}
+
+font:hover{
+	background-color: #88dbeb;
+	opacity: 0.3;
+}

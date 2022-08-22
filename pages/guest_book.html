@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>留言</title>
+		<link rel="stylesheet" type="text/css" href="../css/navigator.css" />
+		<link rel="stylesheet" type="text/css" href="../css/guest_book.css"/>
+		<script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+	</head>
+	<body style="background: #f4f5f5;margin: 0;padding: 0;">
+		<script>
+			function a(t){
+				var book=document.getElementById('book');
+				// var html=`<div class='pinglun'><img style='width:50px;float:left;margin-left:50px' src='../img/touxiang.jpg'/><p>`+
+				// t+
+				// `</p></div>`;
+				// book.innerHTML=html+book.innerHTML;
+				var i=document.createElement('div');
+				i.className='pinglun';
+				// var img = document.createElement('img');
+				// img.style='width:50px;float:left;margin:0 50px 0 50px';
+				// img.src='../img/touxiang.jpg';
+				var text = document.createElement('p');
+				text.style='text-align:left;'
+				text.innerText=t;
+				i.innerHTML+=`<div style="display: inline-block;float:left;margin-bottom:20px">
+				<img style="width:50px;margin:0 50px 0 50px" src="../img/touxiang.jpg"></img></div>`;
+				// i.appendChild(img);
+				i.appendChild(text);
+				var huiFu = document.createElement('textarea');
+				huiFu.style='display:none;';
+				var btn=document.createElement('button');
+				btn.innerText='回复';
+				btn.style='float:right;';
+				var shou = document.createElement('button');
+				shou.style='display:none';
+				shou.innerText='收起';
+				btn.onclick=function(){
+					huiFu.style='display:auto';
+					shou.style='display:auto';
+				};
+				shou.onclick=function(){
+					shou.style='display:none';
+					huiFu.style='display:none;';
+				}
+				i.appendChild(btn);
+				i.appendChild(huiFu);
+				
+				
+				i.appendChild(shou);
+				book.insertBefore(i,book.querySelector('.pinglun'));
+			}
+			function onSend(){
+				a(document.querySelector('textarea').value);
+				document.querySelector('textarea').value='';
+			}
+		</script>
+		<div style="display: block;background: #FFFFFF;">
+			<div class="nav">
+				<div style="display: inline-block;width: 20%;">
+					<img src="../img/logo.png" style="margin-left: 100px;" />
+				</div>
+				
+				<a id="blog" class="nav-btn" href="../index.html">博客</a>
+				<a id="tip" class="nav-btn" href="./notes.html">便签</a>
+				<a id="last" class="nav-btn nav-btn-active" href="./guest_book.html">留言</a>
+				<a id="about" class="nav-btn" href="./about_me.html">关于</a>
+				
+			</div>
+		</div>
+		<div style="width: 100%;" align="center">
+			
+			<div id="book" style="width: 70%;background: linear-gradient(-45deg,#516BEB,#84DFFF);">
+				<div style="height: 300px;margin-bottom: 150px;">
+					<textarea placeholder="有什么想和我说的？"></textarea>
+					<button style="float: right;" onclick="onSend()">发送</button>
+				</div>
+			</div>
+		</div>
+		<script>
+			
+			for(var j=0;j<10;j++){
+				a(`敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！
+				这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，
+				我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！`);
+			}
+			
+		</script>
+		<script>
+		    L2Dwidget.init({
+		        // 引用的模型
+		        "model": {
+					jsonPath: "https://koader.top/Blog/asset/rem/rem.json",    //雷姆
+		            "scale": 1
+		        },
+		        // 模型的样式，可以自行更改
+		        "display": {
+		            "position": "right",
+		            "width": 150,
+		            "height": 300,
+		            "hOffset": -50,
+		            "vOffset": -150
+		        },
+		        "mobile": {
+		            "show": true,
+		            "scale": 0.5
+		        },
+		        "react": {
+		            "opacityDefault": 1,
+		            "opacityOnHover": 0.2
+		        }
+		    });
+		</script>
+	</body>
+</html>

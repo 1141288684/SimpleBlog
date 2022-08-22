@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>便签</title>
+		<link rel="stylesheet" type="text/css" href="../css/navigator.css" />
+		<link rel="stylesheet" type="text/css" href="../css/notes.css" />
+		<script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+	</head>
+	<body style="background: #f4f5f5;margin: 0;padding: 0;">
+		<div style="display: block;background: #FFFFFF;">
+			<div class="nav">
+				<div style="display: inline-block;width: 20%;">
+					<img src="../img/logo.png" style="margin-left: 100px;" />
+				</div>
+				
+				<a id="blog" class="nav-btn" href="../index.html">博客</a>
+				<a id="tip" class="nav-btn nav-btn-active" href="./notes.html">便签</a>
+				<a id="last" class="nav-btn" href="./guest_book.html">留言</a>
+				<a id="about" class="nav-btn" href="./about_me.html">关于</a>
+				
+			</div>
+		</div>
+		<div id="notes" align="center">
+			<!-- <div class="note">
+				
+			</div> -->
+		</div>
+		<script>
+			var notes = document.getElementById('notes');
+			for(var i=0;i<20;i++){
+				var note = document.createElement('div');
+				note.align='left';
+				note.className='note';
+				var span = document.createElement('span');
+				span.innerText='11/11/11 8:00:59';
+				span.style='color:#F999B7';
+				var p = document.createElement('p');
+				p.innerText=`一直听说牛油果吃起来像肥皂、肥肉，虽然很难吃，但是价格却很贵，
+				我还是想尝试一下。今天公司新到了新西兰牛油果，这是新西兰牛油果是第一次在中国上市，
+				个头比普通牛油果大了一倍，被誉为“超牛果”。好奇心驱使我尝了一颗，第一次吃牛油果没有见识，切开牛油果费了好大劲，切成了这样。`;
+				var img = document.createElement('img');
+				
+				img.src='../img/niuyouguo.jpg';
+				note.appendChild(span);
+				note.appendChild(p);
+				
+				note.appendChild(img);
+				notes.appendChild(note);
+			}
+		</script>
+		<script>
+		    L2Dwidget.init({
+		        // 引用的模型
+		        "model": {
+					jsonPath: "https://koader.top/Blog/asset/rem/rem.json",    //雷姆
+		            "scale": 1
+		        },
+		        // 模型的样式，可以自行更改
+		        "display": {
+		            "position": "right",
+		            "width": 150,
+		            "height": 300,
+		            "hOffset": -50,
+		            "vOffset": -150
+		        },
+		        "mobile": {
+		            "show": true,
+		            "scale": 0.5
+		        },
+		        "react": {
+		            "opacityDefault": 1,
+		            "opacityOnHover": 0.2
+		        }
+		    });
+		</script>
+	</body>
+</html>

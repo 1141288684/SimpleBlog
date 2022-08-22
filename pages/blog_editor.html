@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MarkDownEditor</title>
+		<link rel="stylesheet" type="text/css" href="../css/editor.css" />
+		<script src="../js/stack.js"></script>
+		<script src="../js/blog_edit.js"></script>
+		<script>
+			var txt = '';
+			var len = 0;
+			var tk;
+			
+			
+			document.onkeyup = function(){
+				if(event.key=='Backspace'){
+						if(document.getElementById('content').innerText.length==0||document.getElementById('content').innerHTML=='<br>'){
+							document.getElementById('content').innerHTML='';
+							clear();}
+				}
+				get();
+			};
+			    // ctrl + v自然会触发paste事件，根本不用你自己去监听ctrl+v
+			document.addEventListener('paste',function(event){
+				// document.getElementById('div_if').innerHTML='<img src='+event.clipboardData.files[0]+'></img>';
+				//ClipboardEvent 
+				// 获取文件
+				// console.dir();
+				var reader = new FileReader();
+				reader.readAsDataURL(event.clipboardData.files[0]);
+				// alert(window.URL.createObjectURL(event.clipboardData.files[0]));
+				reader.onloadend = function(ev){
+					img.innerText="<img src='"+ev.target.result+"'></img>";
+					img.className="view-text";
+					document.getElementById('content').appendChild(img);
+					var t = document.createElement('font');
+					t.innerHTML='&#10';
+					document.getElementById('content').appendChild(t);
+					keepLastIndex(document.getElementById('content'));
+					// insertAtCursor(, ev.target.result,0);
+					// document.getElementById('content').innerText=document.getElementById('content').innerText+"![("+ev.target.result+")]";
+					// document.getElementById('div_if').innerHTML='<img src='+ev.target.result+'></img>';
+				};
+				// 获取文本
+				// console.dir(event.clipboardData.getData('text'));
+			});
+			
+		</script>
+		
+		
+	</head>
+	<body>
+		
+		
+		<div id="inner" style="height: 100%;width: 100%;">
+			<div style="width: 48%;float: left;background: #F8F9FA;">
+				<div class="test_box" contenteditable="true" id="content" style="width:100%;height: 100%;font-size: 15px;background: #F8F9FA;color: #000000;"></div>
+			</div>
+			
+			<div style="padding-left: 25px;width: 50%;float: right;height: 100%;overflow-y: auto;background: #FFFFFF;" id="div_if">
+				
+			</div>
+			
+		</div>
+		
+		
+		<script>
+			function clear(){
+				var l1 = document.createElement('font');
+				l1.appendChild(document.createElement('br'));
+				var d = document.createElement('div');
+				d.appendChild(l1);
+				document.getElementById('content').appendChild(d);
+				
+				keepLastIndex(document.getElementById('content'));
+			}
+			clear();
+
+		</script>
+	</body>
+</html>
+

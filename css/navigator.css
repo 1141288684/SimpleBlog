@@ -1,0 +1,17 @@
+.nav{
+	display: inline;
+	line-height: 120px;
+	width: 100%;
+}
+.nav-btn{
+	font-size: 20px;
+	padding: 40px;
+	color: #3F2863;
+	text-decoration: none;
+}
+.nav-btn-active{
+	color: #88dbeb;
+}
+.nav-btn:hover{
+	color: #88dbeb;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>密码认证</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="../js/global_data.js"></script>
+	</head>
+	<body style="background: #F8F9FA;">
+		<script>
+			function login(){
+				var psw = document.getElementById('psw').value;
+				$.ajax(
+					{
+						url : baseUrl+'login',
+						type : 'post',
+						data : {'psw':psw},  // type: 默认返回的是头条，可以选择的，这个。
+						success : function(msg){
+							if(msg=='认证成功'){
+								document.cookie=psw;
+								document.location.href='blog_edit_container.html';
+							}
+						},
+						error : function(err){
+							alert('服务器异常');
+						}
+				 
+					}
+				
+				)
+			}
+			document.onkeyup=function(){
+				if(event.key=='Enter'){
+					login();
+				}
+			}
+		</script>
+		<div style="width: 100%;height: 100%;padding-top: 20%;" align="center">
+			<div align="center">
+				<div style="margin: 0 0 50px 0;">
+					<input id="psw" type="password" style="width: 190px;" placeholder="输入密码" />
+				</div>
+				<button style="width: 200px;" onclick="login()">进入</button>
+			</div>
+		</div>
+	</body>
+</html>
